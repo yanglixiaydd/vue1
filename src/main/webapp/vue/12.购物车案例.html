@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h3>{{msg}}</h3>
+<!--    <table border="2px"style="border: aqua">-->
+    <table border="2px" style="border: blueviolet">
+        <tr>
+            <td>ID</td>
+            <td>商品</td>
+            <td>价格</td>
+            <td>数量</td>
+            <td>小计</td>
+            <td>操作</td>
+        </tr>
+        <tr v-for="(productLists,index) in productList">
+            <td>{{productLists.id}}</td>
+            <td>{{productLists.name}}</td>
+            <td>{{productLists.price}}</td>
+            <td>
+                <input @click="subCount(index)" type="button" value="-"/>
+                {{productLists.count}}
+                <input @click="addCount(index)" type="button" value="+"/></td>
+            <td>{{productLists.price*productLists.count}}</td>
+            <td><a href="">删除</a></td>
+        </tr>
+    </table>
+
+        <h2>总价格:{{ totalPrice() }}</h2>
+
+</div>
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+
+  var vue=new Vue({
+    el:"#app",
+    data:{  //定义一系列数据
+      msg:"购物车案例",
+        productList:[
+            {"id":"1","name":"橘子","price":6.5,"count":3},
+            {"id":"2","name":"桃子","price":19.5,"count":3},
+        ]
+    },
+      methods:{
+          subCount(index){
+
+              if(this.productList[index].count==1){
+                  alert("商品数量最少为1")
+              }else{
+                  //根据下标获取对象
+                  var indexs = this.productList[index];
+
+                  //获取对象中的count属性
+                  indexs.count--;
+              }
+          },
+          addCount(index){
+
+              this.productList[index].count++;
+          },
+          totalPrice(){
+
+              console.log("---------");
+
+              var totalPrice=0;
+
+              for(var i=0;i<this.productList.length;i++){
+                  totalPrice+=this.productList[i].count*this.productList[i].price;
+              }
+              //返回计算结果  保留两位小数
+              return totalPrice.toFixed(2);
+          }
+      }
+  })
+</script>

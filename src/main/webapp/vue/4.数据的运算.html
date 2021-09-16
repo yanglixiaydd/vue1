@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h3>{{msg}}</h3>
+  <!--
+    取值方式:
+        {{}}  不会覆盖源标签中的内容
+        差值表达式: 不会出现差值闪烁问题
+
+        差值表达式: 不会出现差值闪烁问题
+        v-text： 会覆盖源标签中的内容
+        v-html： 会覆盖源标签中的内容
+  -->
+  <h4>{{name}}</h4>
+</div>
+
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+  var vue=new Vue({
+    el:"#app",
+    data:{
+      msg:"v-html & v-text取值",
+      name:'小黑',
+    }
+  })
+</script>

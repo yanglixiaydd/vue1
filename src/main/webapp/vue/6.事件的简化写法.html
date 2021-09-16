@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h3>{{msg}}</h3>
+    <h4>{{name}}</h4>
+  <!--
+        事件：要素
+            事件源：触发事件的标签
+            事件：触发的动作
+            监听器：事件触发之后的处理函数
+  -->
+
+    <!--
+        vue中定义事件
+            使用
+    -->
+    <!--
+        简化写法：
+        使用@替换  v-on
+    -->
+
+    <button @click="clickFunc">测试事件</button>
+
+    <!--<button v-on:click="clickMethod">测试事件</button>-->
+</div>
+
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+    /*function aaa(){
+        alert();
+    }*/
+  var vue=new Vue({
+    el:"#app",
+    data:{  //定义一系列数据
+      msg:"事件的简化",
+        name:"桔子"
+    },
+      methods: {  //定义一系列方法
+         clickFunc(){
+             alert();
+         }
+      }
+  })
+</script>

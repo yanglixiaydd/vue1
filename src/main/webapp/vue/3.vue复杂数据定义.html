@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+    <h3>{{msg}}</h3>
+      --------vue对象数据定义---------
+      <h4>{{user.id}}</h4>
+      <h4>{{user.name}}</h4>
+      <h4>{{user.age}}</h4>
+
+      -------vue集合数据--------
+       <h3>{{cities}}</h3>
+      <h4> 数组数据: {{cities[0]}}</h4>
+      <h4> 数组数据: {{cities[1]}}</h4>
+
+      ----------------------------
+      <h3>{{list}}</h3>
+      <h4>{{list.id}}</h4>
+      <h4>{{list.name}}</h4>
+      <h4>{{list.age}}</h4>
+  </div>
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+  /**创建一个vue实例*/
+  var vue=new Vue({
+    el:"#app",  //指定vue实例范围
+    data:{
+      msg:"vue复杂数据定义",
+        user:{"id":"122","name":"桔子","age":"18"},
+        cities:["北京","天津"],
+        list:[
+            {"id":"12","name":"桃子","age":"19"},
+            {"id":"13","name":"大桃子","age":"17"},
+            {"id":"14","name":"小桃子","age":"20"}
+        ]
+    }
+  })
+</script>

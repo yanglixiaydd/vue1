@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--在vue的作用返回内可以使用vue的相关语法-->
+<h3>{{message}}</h3>
+
+<div @click="aaa" style="width: 200px;height: 100px;background-color: blueviolet"></div>
+<div @click.stop="bbb" style="width: 100px;height: 50px;background-color: aqua"></div>
+
+<!--
+    事件的修饰符：
+          作用：写在事件上，修饰事件的
+
+          语法：@click。修饰符=”方法名“
+          修饰符：
+              .stop     停止   用来阻止事件冒泡
+              .prevent  阻止  用来阻止事件的默认行为
+              .self     独自  只触发自己标签上的特定动作的事件
+              .once     一次
+-->
+</div>
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+  var vue=new Vue({
+    el:"#app",
+    data:{
+      message:"事件修饰符"
+    },
+    method:{   //定义一系列方法
+      aaa(){
+        //console.log("大div")
+        alert("大div")
+      },
+      bbb(){
+        //console.log("小div")
+        alert("小div")
+      }
+    },
+    computed:{  //定义计算相关的方法
+
+    }
+  })
+</script>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!--
+      es5:使用var关键字声明变量  定义变量的作用范围模糊
+
+      es6：
+      let:声明局部变量   作用范围：定义行开始到所在代码块结束
+      const：声明常量    定义普通常量值不允许被修改
+
+    -->
+<div id="app">
+<h2>{{msg}}</h2>
+<hr>
+<!---->
+    <login></login>
+</div>
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+ /* //--------------定义变量---------------
+  for (let i=0;i<10;i++){
+    console.log("-=-"+i);
+  }
+//----------------对象定义----------------
+ //es5
+  var id="1";
+  var name="kk";
+  var age=18;*/
+
+ /**
+ *定义全局组件
+  * 参数:徐建名，组件的页面标签
+  * */
+ Vue.component(
+     "login",
+     {
+         template:`<h1>login</h1>`
+ })
+ //创建vue实例
+  const vue=new Vue({
+      el:"#app",
+      data:{
+         msg:"vue中组件的使用"
+      },
+      methods:{}, //定义一系列方法
+      computed:{},//定义计算的方法
+      created(){},
+      components:{
+          login:{
+              template: `<div><h1>这是ligin局部组件</h1></div>`
+          }
+      }
+  })
+</script>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h3>{{msg}}</h3>
+    <!--
+        v-show:
+        作用：控制页面数据是否展示的  地城是通过控制css给标签加一个样式来控制是否展示的
+        语法：v-show="true | false
+
+      v-if:
+          作用：控制页面数据是否展示的
+          语法：v-show="true | false
+
+    -->
+  <div v-show="false" style="width: 100px;height: 100px;background-color: aqua">aaa</div>
+
+    <button @click="yesShow">展示</button>
+    <button @click="noShow">不展示</button>
+
+</div>
+
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+    /*function aaa(){
+        alert();
+    }*/
+  var vue=new Vue({
+    el:"#app",
+    data:{  //定义一系列数据
+      msg:"v-show & v-if",
+        isShow:false,
+    },
+      methods: {  //定义一系列方法
+        noShow(){
+            this.isShow=false;
+        },
+          yesShow(){
+            this.isShow=true;
+          }
+      }
+  })
+</script>

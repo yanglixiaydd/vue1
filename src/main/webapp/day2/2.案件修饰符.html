@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+<!--在vue的作用返回内可以使用vue的相关语法-->
+<h3>{{message}}</h3>
+    <hr>
+  <h4>{{name}}</h4>
+
+<!--
+    按键修饰符：
+
+-->
+    <input @keyup="aaa" type="text" v-model="name"/>
+</div>
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+  var vue=new Vue({
+    el:"#app",
+    data:{
+      message:"事件修饰符",
+        name:"测试按键"
+    },
+    method:{   //定义一系列方法
+      aaa(){
+       console.log("name")
+      }
+    }
+  })
+</script>

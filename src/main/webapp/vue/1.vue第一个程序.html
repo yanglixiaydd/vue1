@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+  <div id="main">
+    {{message}}
+      <h1>{{content}}</h1>
+  </div>
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+  /**创建一个vue实例*/
+  var vue=new Vue({
+    el:"#main", //el(element):指定vue实体作用范围
+    data:{  //指定vue实例携带的数据  可以使用{{}}来取值
+      message:"hello",
+      content:"嘻嘻哈哈",
+    }
+  })
+</script>

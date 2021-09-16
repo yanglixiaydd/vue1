@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h3>{{msg}}</h3>
+
+    <!--
+           v-for:
+                作用：遍历对象（数组，集合）数据
+                语法：在要遍历的标签上加上 v-for=(value值，key,index)
+    -->
+    <h4>{{user.name}}</h4>
+
+    <span v-for="value,key,index in user">
+        下标:{{index}}  属性名:{{key}}  属性值:{{value}}  <br/>
+    </span>
+
+</div>
+
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+
+  var vue=new Vue({
+    el:"#app",
+    data:{  //定义一系列数据
+      msg:"v-for对象遍历",
+       user:{"id":"1","name":"哈哈","age":18},
+        cities:["北京","天津"]
+    },
+  })
+</script>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <div id="app">
+      <div align="center">
+    <h1>{{msg}}</h1>
+
+      <hr>
+
+      <table border="2px" style="background-color: aqua">
+
+          <tr>
+              <td>ID</td>
+              <td>姓名</td>
+              <td>生日</td>
+              <td>操作</td>
+          </tr>
+          <tr>
+              <tr v-for="u in userList"/>
+              <td>{{u.id}}</td>
+              <td>{{u.name}}</td>
+              <td>{{u.birthday}}</td>
+          <td>
+              <button @click="updateUser(u.id)">修改</button>
+              <button @click="deleteUser(u.id)">删除</button>
+          </td>
+          </tr>
+      </table>
+      </div>
+  </div>
+</body>
+</html>
+<script src="../js/axios.min.js"></script>
+<script src="../js/vue.js"></script>
+<script>
+  var vue=new Vue({
+    el:"#app",
+      data:{
+          msg:"用户信息展示",
+          userList:[],
+          user:{},
+      },
+      methods:{
+        queryAll(){
+            axios.get("http://localhost:8989/vue/user/query")
+                    .then(function (res){
+                        console.log(res.data)
+                        vue.userList=res.data;
+                    })
+                    .catch(function (error){})
+        }
+      },
+      created(){
+        this.queryAll();
+      }
+
+  })
+</script>

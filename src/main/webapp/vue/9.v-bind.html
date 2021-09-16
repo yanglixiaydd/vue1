@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app">
+  <h3>{{msg}}</h3>
+
+    <!--
+        v-bind:
+            作用：绑定标签的属性
+            语法：v-bind：属性名="数据中的变量名"
+    -->
+    <img src="photo">
+
+</div>
+
+</body>
+</html>
+<script src="../js/vue.js"></script>
+<script>
+    /*function aaa(){
+        alert();
+    }*/
+  var vue=new Vue({
+    el:"#app",
+    data:{  //定义一系列数据
+      msg:"v-bind",
+        age:18,
+        name:"小黄人",
+        photo:"mi.jpg"
+    },
+      methods: {  //定义一系列方法
+
+      }
+  })
+</script>

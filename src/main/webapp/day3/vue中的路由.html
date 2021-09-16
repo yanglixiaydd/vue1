@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+      <h1>{{msg}}</h1>
+
+      <hr>
+
+
+        <!--<user name="小小"></user>-->
+
+        <button @click="loginFunc">点我登录</button>
+        <button @click="registerFunc">点我注册</button>
+
+        <router-view></router-view>
+    </div>
+</body>
+</html>
+<!--定义局部组件的标签-->
+<template id="register">
+    <div>
+        <h1>用户<span style="color: blueviolet">注册</span>组件</h1>
+    </div>
+</template>
+<template id="login">
+    <div>
+        <h1>用户<span style="color: aqua">登录</span>组件</h1>
+    </div>
+</template>
+
+
+<script src="../js/vue.js"></script>
+<script src="../js/vue-router.js"></script>
+<script>
+
+
+
+    //配置组件对象
+
+ const login={template:"#login"}
+ const register={template:"#register"}
+
+    const VueRouterPush = VueRouter.prototype.push
+    VueRouter.prototype.push = function push (to) {
+        return VueRouterPush.call(this, to).catch(err => err)
+    }
+    const routers=new VueRouter({
+        routes:[
+            { path:'/',redirect:'/login'},
+            { path:'/login', component:login,name:"Login"},
+            { path:'/register', component:register,name:"Register"},
+        ]
+    });
+
+     //创建vue实例
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      msg:"组件中的事件传递"
+    },
+    methods:{
+        loginFunc(){
+            //this.$router.push("/login"); //根据路由路径切换路由
+            //this.$router.push({path:"/login"});//根据路由路径切换路由
+            this.$router.push({name:"Login"});//根据路由名称路径切换路由
+        },
+        registerFunc(){
+            if(this.$route.name!="Register"){
+                //根据路由名称路径切换路由
+                this.$router.push({name:"Register"});
+            }
+        }
+    }, //定义一系列方法
+    computed:{},//定义计算的方法
+    created(){},
+      components:{
+          register,
+          login
+      },
+      router:routers
+  })
+</script>

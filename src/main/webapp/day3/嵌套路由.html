@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div id="app">
+      <h1>{{msg}}</h1>
+      <hr>
+
+    <router-view></router-view>
+
+
+    </div>
+</body>
+</html>
+<!--定义局部组件的标签-->
+<template id="userTemp">
+    <div align="center">
+        <h2>欢迎来到主页</h2>
+        <hr>
+
+        <router-link></router-link>
+    </div>
+
+</template>
+<script src="../js/vue.js"></script>
+<script src="../js/vue-router.js"></script>
+<script>
+
+    const router=new VueRouter({
+        routes:[
+            {path:"/",redirect:"/mains"},
+            {
+                name:"Main",
+                path:"/mains",
+                components:main,
+
+            }
+        ]
+    })
+
+
+  const vue=new Vue({
+    el:"#app",
+    data:{
+      msg:"组件中的事件传递"
+    },
+    methods:{}, //定义一系列方法
+    computed:{},//定义计算的方法
+    created(){},
+  })
+</script>
